@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Memoize-Memcached
-version:             0.01
+version:             0.02
 abstract:            use a memcached cache to memoize functions
 license:             ~
 author:              
