@@ -8,7 +8,7 @@ use Carp qw( carp croak );
 use Memoize qw( unmemoize );
 use Cache::Memcached;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 use Data::Dumper;
 $Data::Dumper::Sortkeys = 1;

@@ -49,7 +49,7 @@ SKIP: {
       $memcached->stats;
     };
     skip "No memcached server running on hosts @servers", 20
-      unless $stats->{hosts};
+      unless $stats and $stats->{hosts};
   }
 
   ok(memoize_memcached('memo_this_00'), "Memoizing of 'memo_this_00'");
