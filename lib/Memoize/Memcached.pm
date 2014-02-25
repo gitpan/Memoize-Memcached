@@ -3,12 +3,11 @@ package Memoize::Memcached;
 use strict;
 use warnings;
 
-use UNIVERSAL qw( isa );
 use Carp qw( carp croak );
 use Memoize qw( unmemoize );
 use Cache::Memcached;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 use Data::Dumper;
 $Data::Dumper::Sortkeys = 1;
@@ -49,7 +48,7 @@ sub memoize_memcached {
 
   my $memcached_args = delete $args{memcached} || {};
   croak "Invalid memcached argument (expected a hash)"
-    unless isa($memcached_args, 'HASH');
+    unless ref $memcached_args eq 'HASH';
 
   _memcached_setup(
     %{$memcached_args},
@@ -138,7 +137,7 @@ sub import {
     next unless $arg eq 'memcached';
     (undef, my $memcached_config) = splice @_, $idx, 2;
     croak "Invalid memcached config (expected a hash ref)"
-      unless isa($memcached_config, 'HASH');
+      unless ref $memcached_config eq 'HASH';
     %memcached_config = %{$memcached_config};
   }
 
